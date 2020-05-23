@@ -1,6 +1,7 @@
-import 'package:cryptocap/controller/variables.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../controller/variables.dart';
+import '../widget/valueCrypto.dart';
+import '../widget/textNameCrypto.dart';
 import '../widget/appBarCustom.dart';
 
 class HomePage extends StatefulWidget {
@@ -34,30 +35,8 @@ class _HomePageState extends State<HomePage> {
                         child: Image.network(
                             "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/125px-Bitcoin.svg.png"),
                       ),
-                      Text(
-                        "Bitcoin",
-                        style: TextStyle(
-                          fontSize: 42.0,
-                          shadows: [
-                            Shadow(
-                              color: blueMain,
-                              offset: Offset(1.0, 1.0),
-                              blurRadius: 4.0,
-                            ),
-                          ],
-                        ),
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: <Widget>[
-                          Text(
-                            "9173.32\$",
-                          ),
-                          Text(
-                            "+2.5%",
-                          )
-                        ],
-                      )
+                      textNameCrypto("Bitcoin"),
+                      valueCrypto("9173.32\$", "+2.5%"),
                     ],
                   ),
                 ),
