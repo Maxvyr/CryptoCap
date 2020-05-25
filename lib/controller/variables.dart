@@ -7,4 +7,4 @@ final Color black = Colors.black;
 final Color green = Colors.green[800];
 
 //Over
-var widthTotal = double.infinity;
+var widthTotal = double.maxFinite;

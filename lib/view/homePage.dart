@@ -1,8 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../widget/cardCrypto.dart';
 import '../controller/variables.dart';
 import '../widget/appBarCustom.dart';
+import '../widget/containerMarketCapAndVolum.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -24,53 +24,17 @@ class _HomePageState extends State<HomePage> {
           child: Container(
             color: blueMain,
             width: widthTotal,
-            height: MediaQuery.of(context).size.height,
+            height: MediaQuery
+                .of(context)
+                .size
+                .height,
             child: Column(
 //              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(35.0),
-                  child: Container(
-                    color: white,
-                    child: Stack(
-                      alignment: Alignment.topCenter,
-                      children: <Widget>[
-                        Container(
-                          height: MediaQuery.of(context).size.height * 0.25,
-                        ),
-                        Positioned(
-                          top: MediaQuery.of(context).size.height * 0.015,
-                          child: Text("Market Capitalisation"),
-                        ),
-                        Positioned(
-                          top: MediaQuery.of(context).size.height * 0.05,
-                          child: Text(
-                            "247 910 Bn\$",
-                            style: TextStyle(fontSize: 35.0),
-                          ),
-                        ),
-                        Positioned(
-                          top: MediaQuery.of(context).size.height * 0.13,
-                          child: Container(
-                            color: blueMain,
-                            width: double.maxFinite,
-                            height: 3.0,
-                          ),
-                        ),
-                        Positioned(
-                          top: MediaQuery.of(context).size.height * 0.14,
-                          child: Text("24h Volume"),
-                        ),
-                        Positioned(
-                          top: MediaQuery.of(context).size.height * 0.18,
-                          child: Text(
-                            "126 50 Bn\$",
-                            style: TextStyle(fontSize: 35.0),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  child: containerMarketCapAndVolum(
+                    context, "247 910", "126 50",),
                 ),
                 SizedBox(height: 5.0),
                 cardCrypto(

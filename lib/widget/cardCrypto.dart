@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import '../controller/variables.dart';
-import 'textNameCrypto.dart';
 
-Card cardCrypto(String name, String imgLink, String value, String pourcent) {
+Widget cardCrypto(String name, String imgLink, String value, String pourcent) {
   return Card(
     color: white,
     elevation: 15.0,
@@ -20,7 +19,23 @@ Card cardCrypto(String name, String imgLink, String value, String pourcent) {
   );
 }
 
-Column valueCrypto(String priceCrypto, String pourcentageCrypto) {
+Widget textNameCrypto(String nameCrypto) {
+  return Text(
+    nameCrypto,
+    style: TextStyle(
+      fontSize: 42.0,
+      shadows: [
+        Shadow(
+          color: blueMain,
+          offset: Offset(1.0, 1.0),
+          blurRadius: 4.0,
+        ),
+      ],
+    ),
+  );
+}
+
+Widget valueCrypto(String priceCrypto, String pourcentageCrypto) {
   return Column(
     mainAxisAlignment: MainAxisAlignment.spaceAround,
     children: <Widget>[
