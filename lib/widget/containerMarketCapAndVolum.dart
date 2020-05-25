@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import '../controller/variables.dart';
 
-Widget containerMarketCapAndVolum (BuildContext context, String valueMarket, String value24hVolum) {
+Widget containerMarketCapAndVolum(
+    BuildContext context, String valueMarket, String value24hVolum) {
   return Container(
     color: white,
     child: Stack(
@@ -12,13 +13,21 @@ Widget containerMarketCapAndVolum (BuildContext context, String valueMarket, Str
         ),
         Positioned(
           top: MediaQuery.of(context).size.height * 0.015,
-          child: Text("Market Capitalisation"),
+          child: Text(
+            "Market Capitalisation",
+            style: TextStyle(
+              fontFamily: fontApp,
+            ),
+          ),
         ),
         Positioned(
           top: MediaQuery.of(context).size.height * 0.05,
           child: Text(
             "$valueMarket Bn\$",
-            style: TextStyle(fontSize: 35.0),
+            style: TextStyle(
+              fontSize: 35.0,
+              fontFamily: fontApp,
+            ),
           ),
         ),
         Positioned(
@@ -31,13 +40,21 @@ Widget containerMarketCapAndVolum (BuildContext context, String valueMarket, Str
         ),
         Positioned(
           top: MediaQuery.of(context).size.height * 0.14,
-          child: Text("24h Volume"),
+          child: Text(
+            "24h Volume",
+            style: TextStyle(
+              fontFamily: fontApp,
+            ),
+          ),
         ),
         Positioned(
           top: MediaQuery.of(context).size.height * 0.18,
           child: Text(
             "$value24hVolum Bn\$",
-            style: TextStyle(fontSize: 35.0),
+            style: TextStyle(
+              fontSize: 35.0,
+              fontFamily: fontApp,
+            ),
           ),
         ),
       ],

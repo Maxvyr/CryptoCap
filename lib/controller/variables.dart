@@ -6,5 +6,8 @@ final Color white = Colors.white;
 final Color black = Colors.black;
 final Color green = Colors.green[800];
 
+//Strings
+String fontApp = 'cryptoCurr';
+
 //Over
 var widthTotal = double.maxFinite;

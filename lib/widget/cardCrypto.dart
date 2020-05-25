@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../controller/variables.dart';
 
-Widget cardCrypto(String name, String imgLink, String value, String pourcent) {
+Widget cardCrypto(BuildContext context, String name, String imgLink, String value, String pourcent) {
   return Card(
     color: white,
     elevation: 15.0,
@@ -23,7 +23,8 @@ Widget textNameCrypto(String nameCrypto) {
   return Text(
     nameCrypto,
     style: TextStyle(
-      fontSize: 42.0,
+      fontSize: 33.0,
+      fontFamily: fontApp,
       shadows: [
         Shadow(
           color: blueMain,
@@ -42,8 +43,9 @@ Widget valueCrypto(String priceCrypto, String pourcentageCrypto) {
       Text(
         "$priceCrypto \$",
         style: TextStyle(
-            fontSize: 25.0,
-            fontWeight: FontWeight.bold
+            fontSize: 20.0,
+            fontWeight: FontWeight.bold,
+            fontFamily: fontApp,
         ),
       ),
       SizedBox(height: 10.0),
@@ -52,6 +54,7 @@ Widget valueCrypto(String priceCrypto, String pourcentageCrypto) {
         style: TextStyle(
           fontSize: 15.0,
           fontWeight: FontWeight.bold,
+          fontFamily: fontApp,
           color: green,
         ),
       )
