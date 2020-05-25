@@ -9,19 +9,31 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarCustom(context),
+      appBar: appBarCustomMain(context),
       body: Center(
         child: SingleChildScrollView(
           child: Container(
             color: blueMain,
-            width: double.infinity,
+            width: widthTotal,
             height: MediaQuery.of(context).size.height,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
+                SizedBox(height: 5.0),
+                cardCrypto(),
+                SizedBox(height: 5.0),
+                cardCrypto(),
+                SizedBox(height: 5.0),
+                cardCrypto(),
                 SizedBox(height: 5.0),
                 cardCrypto(),
               ],
