@@ -1,7 +1,7 @@
 # cryptocap
 
-Tracking crypto-currencies application
-Made with Flutter
+Tracking crypto-currencies application,
+made with Flutter
 
 ![MainScreen](https://i.imgur.com/Y0J7tq3.png)
 
