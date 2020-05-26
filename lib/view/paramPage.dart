@@ -1,5 +1,7 @@
-import 'package:cryptocap/controller/variables.dart';
+import 'package:cryptocap/widget/sizebBoxButton.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+import '../controller/variables.dart';
 import '../widget/appBarCustom.dart';
 
 class ParamPage extends StatefulWidget {
@@ -47,8 +49,7 @@ class _ParamPageState extends State<ParamPage> {
           ),
           Positioned(
             top: MediaQuery.of(context).size.height * 0.12,
-            left: MediaQuery.of(context).size.width*0.25,
-
+            left: MediaQuery.of(context).size.width * 0.25,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(50.0),
               child: Image.network(
@@ -56,6 +57,13 @@ class _ParamPageState extends State<ParamPage> {
               ),
             ),
           ),
+//          SizedBoxButton(
+//            context,
+//            "https://i.imgur.com/Z5twSh1.png",
+//            () {
+//              launch("https://www.buymeacoffee.com/maxvy");
+//            },
+//          ),
         ],
       ),
     );
