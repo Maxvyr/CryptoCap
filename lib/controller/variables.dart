@@ -9,5 +9,8 @@ final Color green = Colors.green[800];
 //Strings
 String fontApp = 'cryptoCurr';
 
+//Boolean
+bool darkMode = false;
+
 //Over
 var widthTotal = double.maxFinite;
