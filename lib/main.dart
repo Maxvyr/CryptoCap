@@ -1,7 +1,8 @@
+import 'controller/variables.dart';
+import 'view/homeScreen.dart';
 import 'package:flutter/material.dart';
-import 'controller/routes.dart';
-import 'view/homePage.dart';
 import 'view/paramPage.dart';
+import 'controller/routes.dart';
 
 void main() => runApp(CryptoCapApp());
 
@@ -11,9 +12,13 @@ class CryptoCapApp extends StatelessWidget {
     return MaterialApp(
       title: 'CryptoCap',
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primaryColor: blueMain,
+        accentColor: accentColor,
+      ),
       initialRoute: homePage,
       routes: {
-        homePage : (context) => HomePage(),
+        homePage : (context) => HomeScreen(),
         paramPage : (context) => ParamPage(),
       },
     );
