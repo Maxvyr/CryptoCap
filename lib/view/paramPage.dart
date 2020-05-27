@@ -110,6 +110,7 @@ class _ParamPageState extends State<ParamPage> {
                       darkMode = b;
                     });
                   },
+                  activeColor: white,
                 ),
               ],
             ),
