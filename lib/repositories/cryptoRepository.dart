@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 class CryptoRepository extends BaseCryptoRepository {
   static const String _baseUrl =
       "https://min-api.cryptocompare.com"; //url API crypto
-  static const int perPage = 50; //crypto showing per page
+  static const int perPage = 20; //crypto showing per page
 
   final http.Client _httpClient;
 

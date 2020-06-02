@@ -26,11 +26,12 @@ Widget cryptoLoadedWidget(BuildContext context, CryptoLoaded state) {
       onNotification: (notification) =>
           _onScrollNotification(notification, state),
       child: ListView.separated(
+        controller: _scrollController,
+        itemCount: state.coins.length,
+
         // separation
         separatorBuilder: (BuildContext context, int index) =>
             SizedBox(height: 5.0),
-        controller: _scrollController,
-        itemCount: state.coins.length,
 
         // container
         itemBuilder: (BuildContext context, int index) {
