@@ -116,31 +116,31 @@ class _ParamPageState extends State<ParamPage> {
             ),
           ),
 
-
           // Brand
           Positioned(
-              bottom: MediaQuery.of(context).size.height * 0.03,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Container(
-                    width: widthTotal,
-                    height: 1.5,
-                    color: black,
-                  ),
-                  SizedBox(height: 2.0),
-                  Text(
-                    " App version 1.0.0",
-                    textAlign: TextAlign.end,
-                    style: TextStyle(fontFamily: fontApp, fontSize: 10.0),
-                  ),
-                  Text(
-                    "  Pandamy - Maxvyr",
-                    textAlign: TextAlign.end,
-                    style: TextStyle(fontFamily: fontApp, fontSize: 10.0),
-                  ),
-                ],
-              ))
+            bottom: MediaQuery.of(context).size.height * 0.03,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  width: widthTotal,
+                  height: 1.5,
+                  color: black,
+                ),
+                SizedBox(height: 2.0),
+                Text(
+                  " App version 1.0.0",
+                  textAlign: TextAlign.end,
+                  style: TextStyle(fontFamily: fontApp, fontSize: 10.0),
+                ),
+                Text(
+                  "  Pandamy - Maxvyr",
+                  textAlign: TextAlign.end,
+                  style: TextStyle(fontFamily: fontApp, fontSize: 10.0),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

@@ -19,7 +19,7 @@ class CryptoCapApp extends StatelessWidget {
           AppStarted(),
         ),
       child: MaterialApp(
-        title: 'CryptoCap',
+        title: "CryptoCap",
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primaryColor: blueMain,
