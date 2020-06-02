@@ -67,7 +67,7 @@ flutter:
   fonts:
     - family: cryptoCurr
       fonts:
-        - asset: assets/fonts/goodTimesRG.ttf
+        - asset: assets/fonts/Sen-Regular.ttf
   #       - asset: fonts/Schyler-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic

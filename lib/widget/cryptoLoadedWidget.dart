@@ -56,6 +56,8 @@ Widget cryptoLoadedWidget(BuildContext context, CryptoLoaded state) {
                         style: TextStyle(
                           color: black,
                           fontFamily: fontApp,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 20.0,
                         ),
                       ),
                     ),
