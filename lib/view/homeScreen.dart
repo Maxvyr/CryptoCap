@@ -1,3 +1,4 @@
+import 'package:cryptocap/controller/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../blocs/bloc.dart';
@@ -13,10 +14,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  //variable
+  bool click = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarCustomMain(context),
+      appBar: AppBarCustomMain(context, homePage),
       body: SafeArea(
         child: BlocBuilder<CryptoBloc, CryptoState>(
           builder: (context, state) {
@@ -43,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
     if (state is CryptoLoading) {
       return cryptoLoadingWidget(context);
     } else if (state is CryptoLoaded) {
-      return cryptoLoadedWidget(context, state);
+      return ListCrypto(state);
     } else if (state is CryptoError) {
       return errorCrytoWidget(context);
     }

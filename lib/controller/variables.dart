@@ -11,6 +11,9 @@ final Color red = Colors.red[800];
 //Strings
 String fontApp = 'cryptoCurr';
 
+//int
+int indexCrypto = 0;
+
 //Boolean
 bool darkMode = false;
 

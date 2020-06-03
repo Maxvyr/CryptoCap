@@ -1,3 +1,4 @@
+import 'package:cryptocap/view/cryptoPage.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'blocs/bloc.dart';
 import 'controller/variables.dart';
@@ -29,6 +30,7 @@ class CryptoCapApp extends StatelessWidget {
         routes: {
           homePage: (context) => HomeScreen(),
           paramPage: (context) => ParamPage(),
+          cryptoPage: (context) => CryptoPage(),
         },
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:cryptocap/controller/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../widget/appBarCustom.dart';
@@ -17,7 +18,7 @@ class _ParamPageState extends State<ParamPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarCustomSecond(context),
+      appBar:  AppBarCustomMain(context, paramPage),
       body: Stack(
         alignment: AlignmentDirectional.topStart,
         children: <Widget>[
