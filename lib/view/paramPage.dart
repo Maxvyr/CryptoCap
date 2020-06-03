@@ -1,7 +1,7 @@
-import 'package:cryptocap/controller/routes.dart';
-import 'package:cryptocap/view/containerMain.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../view/containerMain.dart';
+import '../controller/routes.dart';
 import '../widget/appBarCustom.dart';
 import '../controller/variables.dart';
 
