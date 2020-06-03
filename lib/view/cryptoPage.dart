@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../blocs/bloc.dart';
 
 class CryptoPage extends StatefulWidget {
   @override
@@ -6,10 +8,15 @@ class CryptoPage extends StatefulWidget {
 }
 
 class _CryptoPageState extends State<CryptoPage> {
+
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text("Coming Soon"),
+      child: BlocBuilder<CryptoBloc, CryptoState>(
+        builder: (context, state) {
+          return Text("Coming Soon");
+        },
+      ),
     );
   }
 }
