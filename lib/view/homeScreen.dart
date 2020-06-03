@@ -1,8 +1,8 @@
 import 'package:cryptocap/controller/routes.dart';
+import 'package:cryptocap/view/containerMain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../blocs/bloc.dart';
-import '../controller/variables.dart';
 import '../widget/appBarCustom.dart';
 import '../widget/cryptoLoadedWidget.dart';
 import '../widget/errorCryptoWidget.dart';
@@ -25,19 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SafeArea(
         child: BlocBuilder<CryptoBloc, CryptoState>(
           builder: (context, state) {
-            return Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    blueMain,
-                    blueMain.withOpacity(0.3),
-                  ],
-                ),
-              ),
-              child: _buildBody(state),
-            );
+            return ContainerMain(_buildBody(state));
           },
         ),
       ),

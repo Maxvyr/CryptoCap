@@ -1,7 +1,8 @@
-import 'package:cryptocap/controller/routes.dart';
-import 'package:cryptocap/widget/appBarCustom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../controller/routes.dart';
+import '../view/containerMain.dart';
+import '../widget/appBarCustom.dart';
 import '../blocs/bloc.dart';
 
 class CryptoPage extends StatefulWidget {
@@ -17,7 +18,7 @@ class _CryptoPageState extends State<CryptoPage> {
       appBar: AppBarCustomMain(context,cryptoPage),
       body: BlocBuilder<CryptoBloc, CryptoState>(
         builder: (context, state) {
-          return Text("Coming Soon");
+          return ContainerMain(null);
         },
       ),
     );

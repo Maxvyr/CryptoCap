@@ -1,4 +1,5 @@
 import 'package:cryptocap/controller/routes.dart';
+import 'package:cryptocap/view/containerMain.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../widget/appBarCustom.dart';
@@ -22,11 +23,7 @@ class _ParamPageState extends State<ParamPage> {
       body: Stack(
         alignment: AlignmentDirectional.topStart,
         children: <Widget>[
-          Container(
-            color: blueMain,
-            width: widthTotal,
-            height: double.infinity,
-          ),
+          ContainerMain(null),
 
           // Github Button
           Positioned(
