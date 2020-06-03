@@ -7,34 +7,34 @@ import '../widget/cryptoLoadedWidget.dart';
 import '../widget/errorCryptoWidget.dart';
 import '../widget/cryptoLoadingWidget.dart';
 
-
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBarCustomMain(context),
-      body: BlocBuilder<CryptoBloc, CryptoState>(
-        builder: (context, state) {
-          return Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  blueMain,
-                  blueMain.withOpacity(0.3),
-                ],
+      body: SafeArea(
+        child: BlocBuilder<CryptoBloc, CryptoState>(
+          builder: (context, state) {
+            return Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    blueMain,
+                    blueMain.withOpacity(0.3),
+                  ],
+                ),
               ),
-            ),
-              child : _buildBody(state),
-          );
-        },
+              child: _buildBody(state),
+            );
+          },
+        ),
       ),
     );
   }

@@ -26,6 +26,7 @@ Widget cryptoLoadedWidget(BuildContext context, CryptoLoaded state) {
       onNotification: (notification) =>
           _onScrollNotification(notification, state),
       child: ListView.separated(
+        padding: EdgeInsets.only(top: 5.0, left: 5.0, right: 5.0),
         controller: _scrollController,
         itemCount: state.coins.length,
 
@@ -39,12 +40,22 @@ Widget cryptoLoadedWidget(BuildContext context, CryptoLoaded state) {
           return ClipRRect(
             borderRadius: BorderRadius.circular(20.0),
             child: Container(
-              color: white,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    white,
+                    Colors.white70,
+                  ],
+                ),
+              ),
               child: ListTile(
                 leading: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Image.network("https://www.cryptocompare.com${coin.imageURL}",
+                    Image.network(
+                        "https://www.cryptocompare.com${coin.imageURL}",
                         scale: 10),
                   ],
                 ),
