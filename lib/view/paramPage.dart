@@ -124,7 +124,7 @@ class _ParamPageState extends State<ParamPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Container(
-                  width: widthTotal,
+                  width: double.maxFinite,
                   height: 1.5,
                   color: black,
                 ),

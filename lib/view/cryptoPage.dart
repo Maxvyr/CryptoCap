@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../repositories/cryptoRepository.dart';
 import '../controller/routes.dart';
 import '../controller/variables.dart';
@@ -17,6 +19,8 @@ class _CryptoPageState extends State<CryptoPage> {
   int _page = 0;
   int _index = 0;
   String _cryptoName;
+  String _urlBuyCrypto =
+      "https://www.coinbase.com/join/vidali_e?src=android-link";
 
   @override
   void initState() {
@@ -27,13 +31,15 @@ class _CryptoPageState extends State<CryptoPage> {
 
   @override
   Widget build(BuildContext context) {
+    // variable
+    var screen = MediaQuery.of(context);
 
     return Scaffold(
       appBar: AppBarCustomMain(
-              context: context,
-              page: cryptoPage,
-              title: _cryptoName,
-            ),
+        context: context,
+        page: cryptoPage,
+        title: _cryptoName,
+      ),
       body: ContainerMain(
         Center(
           child: FutureBuilder(
@@ -54,6 +60,46 @@ class _CryptoPageState extends State<CryptoPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    // graph
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(55.0),
+                      child: Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Image.network(
+                              "")),
+                    ),
+
+                    // Button Buy crypto - Coinbase
+                    RaisedButton(
+                      onPressed: () {
+                        launch(_urlBuyCrypto);
+                      },
+                      elevation: 8.0,
+                      color: white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                      ),
+                      child: Container(
+                        width: screen.size.width * 0.8,
+                        child: Center(
+                          child: Text(
+                            "Buy Crypto",
+                            style: TextStyle(
+                                fontFamily: fontApp,
+                                fontSize: 22.0,
+                                fontWeight: FontWeight.w800,
+                                shadows: [
+                                  Shadow(
+                                    color: grey,
+                                    offset: Offset(2.0, 2.0),
+                                    blurRadius: 8.0,
+                                  )
+                                ]),
+                          ),
+                        ),
+                      ),
+                    ),
+
                     Text(
                       coin.name,
                       style: TextStyle(color: black),
