@@ -45,7 +45,7 @@ class _CryptoPageState extends State<CryptoPage> {
           child: FutureBuilder(
             future: _cryptoRepository.getTopCoins(page: _page),
             builder: (context, snapshot) {
-              // si pas de données alors affichage cercle de recherche
+              // si pas de donnée alors affichage cercle de recherche
               if (!snapshot.hasData) {
                 return cryptoLoadingWidget(context);
               }
@@ -60,12 +60,10 @@ class _CryptoPageState extends State<CryptoPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    
                     // graph
                     ClipRRect(
                       borderRadius: BorderRadius.circular(55.0),
-                      child: Image.network(
-                          "https://picsum.photos/400"),
+                      child: Image.network("https://picsum.photos/400"),
                     ),
 
                     // Button Buy crypto - Coinbase
@@ -105,9 +103,10 @@ class _CryptoPageState extends State<CryptoPage> {
                       borderRadius: BorderRadius.circular(35.0),
                       child: Container(
                         color: white,
-                        width: screen.size.width * 0.8,
+                        width: screen.size.width * 0.9,
                         child: Column(
                           children: [
+                            SizedBox(height: 5.0),
                             rowCrypto(
                               textDescribe: "Market Cap",
                               value: "\$ ${coin.marketCapCrypto}",
@@ -118,19 +117,21 @@ class _CryptoPageState extends State<CryptoPage> {
                             ),
                             rowCrypto(
                               textDescribe: "Available Supply",
-                              value: "${coin.availableSupply.toStringAsFixed(2)}",
+                              value:
+                                  "${coin.availableSupply.toStringAsFixed(2)} ${coin.name}",
                             ),
                             rowCrypto(
                               textDescribe: "% change 1h",
                               value: "${coin.changePct1h.toStringAsFixed(2)} %",
                               colorValue: coin.changePct1h >= 0 ? green : red,
                             ),
-
                             rowCrypto(
                               textDescribe: "% change 1d",
-                              value: "${coin.changePct24h.toStringAsFixed(2)} %",
+                              value:
+                                  "${coin.changePct24h.toStringAsFixed(2)} %",
                               colorValue: coin.changePct24h >= 0 ? green : red,
                             ),
+                            SizedBox(height: 5.0),
                           ],
                         ),
                       ),
@@ -151,7 +152,12 @@ class _CryptoPageState extends State<CryptoPage> {
     Color colorValue = Colors.black,
   }) {
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.only(
+        right: 15.0,
+        left: 15.0,
+        top: 10.0,
+        bottom: 10.0,
+      ),
       child: Row(
         children: [
           Text(
