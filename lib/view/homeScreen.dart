@@ -1,5 +1,5 @@
 import '../controller/routes.dart';
-import '../view/containerMain.dart';
+import '../widget/containerMain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../blocs/bloc.dart';
@@ -14,11 +14,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarCustomMain(context, homePage),
+      appBar: AppBarCustomMain(
+        context: context,
+        page: homePage,
+      ),
       body: SafeArea(
         child: BlocBuilder<CryptoBloc, CryptoState>(
           builder: (context, state) {

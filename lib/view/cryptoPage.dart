@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../repositories/cryptoRepository.dart';
 import '../controller/routes.dart';
 import '../controller/variables.dart';
-import '../view/containerMain.dart';
+import '../widget/containerMain.dart';
 import '../widget/cryptoLoadingWidget.dart';
 import '../widget/appBarCustom.dart';
 import '../widget/coinModel.dart';
@@ -15,60 +15,58 @@ class CryptoPage extends StatefulWidget {
 class _CryptoPageState extends State<CryptoPage> {
   final _cryptoRepository = CryptoRepository();
   int _page = 0;
+  int _index = 0;
+  String _cryptoName;
 
   @override
   void initState() {
     super.initState();
-    int _index = indexCrypto;
+    _index = indexCrypto;
+    _cryptoName = nameCryptoClick;
   }
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
-      appBar: AppBarCustomMain(context, cryptoPage),
+      appBar: AppBarCustomMain(
+              context: context,
+              page: cryptoPage,
+              title: _cryptoName,
+            ),
       body: ContainerMain(
         Center(
           child: FutureBuilder(
             future: _cryptoRepository.getTopCoins(page: _page),
             builder: (context, snapshot) {
+              // si pas de données alors affichage cercle de recherche
               if (!snapshot.hasData) {
                 return cryptoLoadingWidget(context);
               }
+              /*
+                stock les coin dans un list et
+                l'index de cette liste est l'index qui correspond au click de l'utilisateur
+                ceci permet d'afficher des détails de la crypto
+              */
               final List<Coin> coins = snapshot.data;
-              return ListView.builder(
-                itemCount: coins.length,
-                itemBuilder: (BuildContext context, int index) {
-                  final coin = coins[index];
-                  return ListTile(
-                    leading: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          '${++index}',
-                          style: TextStyle(
-                            color: Theme.of(context).accentColor,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ],
-                    ),
-                    title: Text(
-                      coin.fullName,
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    subtitle: Text(
+              final coin = coins[_index];
+              return SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
                       coin.name,
-                      style: TextStyle(color: Colors.white70),
+                      style: TextStyle(color: black),
                     ),
-                    trailing: Text(
+                    Text(
                       '\$${coin.price.toStringAsFixed(4)}',
                       style: TextStyle(
                         color: Theme.of(context).accentColor,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                  );
-                },
+                  ],
+                ),
               );
             },
           ),

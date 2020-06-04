@@ -7,6 +7,7 @@ class CryptoRepository extends BaseCryptoRepository {
   static const String _baseUrl =
       "https://min-api.cryptocompare.com"; //url API crypto
   static const int perPage = 20; //crypto showing per page
+  final  String _apikey =  "ff889783f05a0e3991d3e4f4566e573dcf787947457348d7badeca749042d759";
 
   final http.Client _httpClient;
 
@@ -17,7 +18,7 @@ class CryptoRepository extends BaseCryptoRepository {
   Future<List<Coin>> getTopCoins({int page}) async {
     List<Coin> coins = [];
     String requestUrl =
-        "$_baseUrl/data/top/mktcapfull?limit=$perPage&tsym=USD&page=$page";
+        "$_baseUrl/data/top/mktcapfull?limit=$perPage&tsym=USD&page=$page&api_key=$_apikey";
 
     try {
       final response = await _httpClient.get(requestUrl);

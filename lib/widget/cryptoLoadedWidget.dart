@@ -123,7 +123,7 @@ class _ListCryptoState extends State<ListCrypto> {
                       )
                     ],
                   ),
-                  onTap: () => _callPage(index),
+                  onTap: () => _callPage(index, coin.fullName),
                 ),
               ),
             );
@@ -133,8 +133,9 @@ class _ListCryptoState extends State<ListCrypto> {
     );
   }
 
-  _callPage(int index) {
+  _callPage(int index, String nameCrypto) {
     indexCrypto = index;
+    nameCryptoClick = nameCrypto;
     Navigator.pushNamed(context, cryptoPage);
   }
 }

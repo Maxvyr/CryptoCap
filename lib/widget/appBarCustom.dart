@@ -3,9 +3,9 @@ import '../controller/variables.dart';
 import '../controller/routes.dart';
 
 class AppBarCustomMain extends AppBar {
-  AppBarCustomMain(
-    dynamic context,
-    String page, {
+  AppBarCustomMain({
+    @required dynamic context,
+    @required String page,
     String title = "CryptoCap",
   }) : super(
           title: Text(

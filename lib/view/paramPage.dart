@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../view/containerMain.dart';
+import '../widget/containerMain.dart';
 import '../controller/routes.dart';
 import '../widget/appBarCustom.dart';
 import '../controller/variables.dart';
@@ -19,7 +19,10 @@ class _ParamPageState extends State<ParamPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:  AppBarCustomMain(context, paramPage),
+      appBar: AppBarCustomMain(
+        context: context,
+        page: paramPage,
+      ),
       body: Stack(
         alignment: AlignmentDirectional.topStart,
         children: <Widget>[

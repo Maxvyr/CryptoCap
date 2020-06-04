@@ -10,6 +10,7 @@ final Color red = Colors.red[800];
 
 //Strings
 String fontApp = 'cryptoCurr';
+String nameCryptoClick = "";
 
 //int
 int indexCrypto = 0;
