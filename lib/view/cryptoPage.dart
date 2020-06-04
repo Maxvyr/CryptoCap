@@ -60,13 +60,12 @@ class _CryptoPageState extends State<CryptoPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    
                     // graph
                     ClipRRect(
                       borderRadius: BorderRadius.circular(55.0),
-                      child: Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Image.network(
-                              "")),
+                      child: Image.network(
+                          "https://picsum.photos/400"),
                     ),
 
                     // Button Buy crypto - Coinbase
@@ -85,30 +84,55 @@ class _CryptoPageState extends State<CryptoPage> {
                           child: Text(
                             "Buy Crypto",
                             style: TextStyle(
-                                fontFamily: fontApp,
-                                fontSize: 22.0,
-                                fontWeight: FontWeight.w800,
-                                shadows: [
-                                  Shadow(
-                                    color: grey,
-                                    offset: Offset(2.0, 2.0),
-                                    blurRadius: 8.0,
-                                  )
-                                ]),
+                              fontFamily: fontApp,
+                              fontSize: 22.0,
+                              fontWeight: FontWeight.w800,
+                              shadows: [
+                                Shadow(
+                                  color: grey,
+                                  offset: Offset(2.0, 2.0),
+                                  blurRadius: 8.0,
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
 
-                    Text(
-                      coin.name,
-                      style: TextStyle(color: black),
-                    ),
-                    Text(
-                      '\$${coin.price.toStringAsFixed(4)}',
-                      style: TextStyle(
-                        color: Theme.of(context).accentColor,
-                        fontWeight: FontWeight.w600,
+                    //bloc data crypto
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(35.0),
+                      child: Container(
+                        color: white,
+                        width: screen.size.width * 0.8,
+                        child: Column(
+                          children: [
+                            rowCrypto(
+                              textDescribe: "Market Cap",
+                              value: "\$ ${coin.marketCapCrypto}",
+                            ),
+                            rowCrypto(
+                              textDescribe: "24h Volume",
+                              value: "\$ ${coin.volume24h.toStringAsFixed(2)}",
+                            ),
+                            rowCrypto(
+                              textDescribe: "Available Supply",
+                              value: "${coin.availableSupply.toStringAsFixed(2)}",
+                            ),
+                            rowCrypto(
+                              textDescribe: "% change 1h",
+                              value: "${coin.changePct1h.toStringAsFixed(2)} %",
+                              colorValue: coin.changePct1h >= 0 ? green : red,
+                            ),
+
+                            rowCrypto(
+                              textDescribe: "% change 1d",
+                              value: "${coin.changePct24h.toStringAsFixed(2)} %",
+                              colorValue: coin.changePct24h >= 0 ? green : red,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],
@@ -117,6 +141,29 @@ class _CryptoPageState extends State<CryptoPage> {
             },
           ),
         ),
+      ),
+    );
+  }
+
+  Widget rowCrypto({
+    @required String textDescribe,
+    @required String value,
+    Color colorValue = Colors.black,
+  }) {
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Row(
+        children: [
+          Text(
+            textDescribe,
+            style: TextStyle(color: black),
+          ),
+          Spacer(),
+          Text(
+            value,
+            style: TextStyle(color: colorValue),
+          ),
+        ],
       ),
     );
   }

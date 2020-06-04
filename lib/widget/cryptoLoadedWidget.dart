@@ -114,7 +114,7 @@ class _ListCryptoState extends State<ListCrypto> {
                         ),
                       ),
                       Text(
-                        "${coin.changePct24h.toStringAsFixed(2)}%",
+                        "${coin.changePct24h.toStringAsFixed(2)} %",
                         style: TextStyle(
                           color: coin.changePct24h >= 0 ? green : red,
                           fontSize: 18.0,
