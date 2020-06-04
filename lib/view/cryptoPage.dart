@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_sparkline/flutter_sparkline.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../repositories/cryptoRepository.dart';
 import '../controller/routes.dart';
@@ -21,6 +22,7 @@ class _CryptoPageState extends State<CryptoPage> {
   String _cryptoName;
   String _urlBuyCrypto =
       "https://www.coinbase.com/join/vidali_e?src=android-link";
+  var cryptoValue = [0.0, 1.0, 1.5, 2.0, 0.0, 0.0, -0.5, -1.0, -0.5, 0.0, 0.0];
 
   @override
   void initState() {
@@ -40,30 +42,41 @@ class _CryptoPageState extends State<CryptoPage> {
         page: cryptoPage,
         title: _cryptoName,
       ),
-      body: ContainerMain(
-        Center(
-          child: FutureBuilder(
-            future: _cryptoRepository.getTopCoins(page: _page),
-            builder: (context, snapshot) {
-              // si pas de donnée alors affichage cercle de recherche
-              if (!snapshot.hasData) {
-                return cryptoLoadingWidget(context);
-              }
-              /*
-                stock les coin dans un list et
-                l'index de cette liste est l'index qui correspond au click de l'utilisateur
-                ceci permet d'afficher des détails de la crypto
-              */
-              final List<Coin> coins = snapshot.data;
-              final coin = coins[_index];
-              return SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: SafeArea(
+        child: ContainerMain(
+          Center(
+            child: FutureBuilder(
+              future: _cryptoRepository.getTopCoins(page: _page),
+              builder: (context, snapshot) {
+                // si pas de data alors affichage cercle de recherche
+                if (!snapshot.hasData) {
+                  return cryptoLoadingWidget(context);
+                }
+                /*
+                  stock les coin dans un list et
+                  l'index de cette liste est l'index qui correspond au click de l'utilisateur
+                  ceci permet d'afficher des détails de la crypto
+                */
+                final List<Coin> coins = snapshot.data;
+                final coin = coins[_index];
+                return Column(
                   children: [
+                    SizedBox(height: 10.0),
                     // graph
                     ClipRRect(
-                      borderRadius: BorderRadius.circular(55.0),
-                      child: Image.network("https://picsum.photos/400"),
+                      borderRadius: BorderRadius.circular(35.0),
+                      child: Container(
+                        width: screen.size.width * 0.9,
+                        height: screen.size.height * 0.5,
+                        color: white,
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Sparkline(
+                            data: cryptoValue,
+                            pointsMode: PointsMode.all,
+                          ),
+                        ),
+                      ),
                     ),
 
                     // Button Buy crypto - Coinbase
@@ -127,8 +140,7 @@ class _CryptoPageState extends State<CryptoPage> {
                             ),
                             rowCrypto(
                               textDescribe: "% change 1d",
-                              value:
-                                  "${coin.changePct24h.toStringAsFixed(2)} %",
+                              value: "${coin.changePct24h.toStringAsFixed(2)} %",
                               colorValue: coin.changePct24h >= 0 ? green : red,
                             ),
                             SizedBox(height: 5.0),
@@ -137,9 +149,9 @@ class _CryptoPageState extends State<CryptoPage> {
                       ),
                     ),
                   ],
-                ),
-              );
-            },
+                );
+              },
+            ),
           ),
         ),
       ),

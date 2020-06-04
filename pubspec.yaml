@@ -31,6 +31,8 @@ dependencies:
   equatable: ^1.1.1
   # http
   http: ^0.12.1
+  #sparkline
+  flutter_sparkline: ^0.1.0
   
 dev_dependencies:
   flutter_test:
