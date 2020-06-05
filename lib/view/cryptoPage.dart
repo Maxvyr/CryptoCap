@@ -62,9 +62,16 @@ class _CryptoPageState extends State<CryptoPage> {
                 final List<Coin> coins = snapshot.data;
                 final coin = coins[_index];
 
-                // calcPrevious value
-                price1d = coin.changePct24h >=0 ? coin.price * (coin.changePct24h / 100) : 0;
-                price1h = coin.price * (coin.changePct1h / 100);
+                /* calcPrevious value
+                 * d'abord transfo le pourcentage en valeur comppris entre  -1 et 1
+                 * ajouter 1 a la valeur abs du résultat
+                 * si résultat positif * par addition sinon /
+                */
+                var _changeTempo24h = coin.changePct24h/100;
+                var _changeTempo1h = coin.changePct1h/100;
+                price1d = (_changeTempo24h >= 0) ? coin.price * (1+ _changeTempo24h.abs()) : coin.price / (1+ _changeTempo24h.abs()) ;
+                price1h = (_changeTempo1h >= 0) ? coin.price * (1+ _changeTempo1h.abs()) : coin.price / (1+ _changeTempo1h.abs()) ;
+                print("$price1d et $price1h");
 
                 _cryptoValue = [
                   price1d,
