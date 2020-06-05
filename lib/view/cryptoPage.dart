@@ -105,6 +105,8 @@ class _CryptoPageState extends State<CryptoPage> {
               SizedBox(height: screen.size.height * 0.001),
 
               // graph
+
+              //container background
               Stack(
                 children: [
                   ClipRRect(
@@ -115,18 +117,24 @@ class _CryptoPageState extends State<CryptoPage> {
                       color: (isDark) ? grey : white,
                     ),
                   ),
+
+                  //High Value
                   Positioned(
-                    top: screen.size.height * 0.05,
+                    top: screen.size.height * 0.03,
                     left: 5.0,
                     child:
                         Text("${_cryptoValue.reduce(max).toStringAsFixed(4)}"),
                   ),
+
+                  //Low Value
                   Positioned(
-                    top: screen.size.height * 0.4,
+                    top: screen.size.height * 0.44,
                     left: 5.0,
                     child:
                         Text("${_cryptoValue.reduce(min).toStringAsFixed(4)}"),
                   ),
+
+                  //Sparkline
                   Positioned(
                     top: screen.size.height * 0.05,
                     left: screen.size.width * 0.2,
