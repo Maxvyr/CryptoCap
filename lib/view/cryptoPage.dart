@@ -10,6 +10,7 @@ import '../controller/variables.dart';
 import '../widget/containerMain.dart';
 import '../widget/cryptoLoadingWidget.dart';
 import '../widget/appBarCustom.dart';
+import 'dart:math';
 
 class CryptoPage extends StatefulWidget {
   @override
@@ -100,7 +101,7 @@ class _CryptoPageState extends State<CryptoPage> {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(35.0),
                     child: Container(
-                      width: screen.size.width * 0.9,
+                      width: screen.size.width * 0.95,
                       height: screen.size.height * 0.5,
                       color: white,
                     ),
@@ -108,21 +109,18 @@ class _CryptoPageState extends State<CryptoPage> {
                   Positioned(
                     top: screen.size.height * 0.05,
                     left: 5.0,
-                    child: Text("${_cryptoValue[2].toStringAsFixed(2)}"),
-                  ),
-                  Positioned(
-                    top: screen.size.height * 0.25,
-                    left: 5.0,
-                    child: Text("${_cryptoValue[1].toStringAsFixed(2)}"),
+                    child: Text("${_cryptoValue.reduce(max)
+                        .toStringAsFixed(4)}"),
                   ),
                   Positioned(
                     top: screen.size.height * 0.4,
                     left: 5.0,
-                    child: Text("${_cryptoValue[0].toStringAsFixed(2)}"),
+                    child: Text("${_cryptoValue.reduce(min).toStringAsFixed(4)
+                    }"),
                   ),
                   Positioned(
                     top: screen.size.height * 0.05,
-                    left: screen.size.width * 0.15,
+                    left: screen.size.width * 0.2,
                     child: Container(
                       height: screen.size.height * 0.4,
                       child: Sparkline(
