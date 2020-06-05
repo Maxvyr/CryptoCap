@@ -32,6 +32,11 @@ class _ListCryptoState extends State<ListCrypto> {
 
   @override
   Widget build(BuildContext context) {
+
+    //variable DarkMode
+    final Brightness brightnessValue = MediaQuery.of(context).platformBrightness;
+    bool isDark = brightnessValue == Brightness.dark;
+
     return RefreshIndicator(
       color: Theme
           .of(context)
@@ -62,8 +67,8 @@ class _ListCryptoState extends State<ListCrypto> {
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: [
-                      white,
-                      Colors.white70,
+                      (isDark) ? blueGrey : white,
+                      (isDark) ? grey : white70,
                     ],
                   ),
                 ),
@@ -94,7 +99,7 @@ class _ListCryptoState extends State<ListCrypto> {
                   subtitle: Text(
                     coin.name,
                     style: TextStyle(
-                      color: Colors.blueGrey,
+                      color: (isDark) ? white : blueGrey,
                       fontFamily: fontApp,
                     ),
                   ),

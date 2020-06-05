@@ -23,8 +23,14 @@ class CryptoCapApp extends StatelessWidget {
         title: "CryptoCap",
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
+          brightness: Brightness.light,
           primaryColor: blueMain,
           accentColor: accentColor,
+        ),
+        darkTheme: ThemeData(
+          brightness: Brightness.dark,
+          primaryColor: Colors.black,
+          accentColor: white,
         ),
         initialRoute: homePage,
         routes: {

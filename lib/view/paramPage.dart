@@ -18,6 +18,11 @@ class _ParamPageState extends State<ParamPage> {
 
   @override
   Widget build(BuildContext context) {
+
+    //variable DarkMode
+    final Brightness brightnessValue = MediaQuery.of(context).platformBrightness;
+    bool isDark = brightnessValue == Brightness.dark;
+
     return Scaffold(
       appBar: AppBarCustomMain(
         context: context,
@@ -27,7 +32,10 @@ class _ParamPageState extends State<ParamPage> {
         child: Stack(
           alignment: AlignmentDirectional.topStart,
           children: <Widget>[
-            ContainerMain(null),
+            ContainerMain(
+              context,
+              null,
+            ),
 
             // Github Button
             Positioned(
@@ -88,36 +96,6 @@ class _ParamPageState extends State<ParamPage> {
               ),
             ),
 
-            // Dark Mode
-            Positioned(
-              top: MediaQuery.of(context).size.height * 0.30,
-              left: 15.0,
-              child: Row(
-                children: <Widget>[
-                  Text(
-                    "Dark Mode : ",
-                    style: TextStyle(
-                      fontFamily: fontApp,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 20.0,
-                    ),
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.33,
-                  ),
-                  Switch(
-                    value: darkMode,
-                    onChanged: (bool b) {
-                      setState(() {
-                        darkMode = b;
-                      });
-                    },
-                    activeColor: white,
-                  ),
-                ],
-              ),
-            ),
-
             // Brand
             Positioned(
               bottom: MediaQuery.of(context).size.height * 0.03,
@@ -127,18 +105,18 @@ class _ParamPageState extends State<ParamPage> {
                   Container(
                     width: double.maxFinite,
                     height: 1.5,
-                    color: black,
+                    color: (isDark) ? white : black,
                   ),
                   SizedBox(height: 2.0),
                   Text(
                     " App version 1.0.0",
                     textAlign: TextAlign.end,
-                    style: TextStyle(fontFamily: fontApp, fontSize: 10.0),
+                    style: TextStyle(fontFamily: fontApp, fontSize: 10.0,),
                   ),
                   Text(
                     "  Pandamy - Maxvyr",
                     textAlign: TextAlign.end,
-                    style: TextStyle(fontFamily: fontApp, fontSize: 10.0),
+                    style: TextStyle(fontFamily: fontApp, fontSize: 10.0,),
                   ),
                 ],
               ),

@@ -36,6 +36,9 @@ class _CryptoPageState extends State<CryptoPage> {
   Widget build(BuildContext context) {
     // variable
     var screen = MediaQuery.of(context);
+    final Brightness brightnessValue =
+        MediaQuery.of(context).platformBrightness;
+    bool isDark = brightnessValue == Brightness.dark;
 
     return Scaffold(
       appBar: AppBarCustomMain(
@@ -45,10 +48,15 @@ class _CryptoPageState extends State<CryptoPage> {
       ),
       body: SafeArea(
         child: ContainerMain(
+          context,
           Center(
             child: BlocBuilder<CryptoBloc, CryptoState>(
               builder: (context, state) {
-                return _buildPage(state, screen);
+                return _buildPage(
+                  state,
+                  screen,
+                  isDark,
+                );
               },
             ),
           ),
@@ -57,24 +65,25 @@ class _CryptoPageState extends State<CryptoPage> {
     );
   }
 
-  _buildPage(CryptoState state, MediaQueryData screen) {
+  _buildPage(CryptoState state, MediaQueryData screen, bool isDark) {
     // si pas de data alors affichage cercle de recherche
     if (state is CryptoLoading) {
       return cryptoLoadingWidget(context);
     } else if (state is CryptoLoaded) {
       /*
-                  stock les coin dans un list et
-                  l'index de cette liste est l'index qui correspond au click de l'utilisateur
-                  ceci permet d'afficher des détails de la crypto
-                */
+        stock les coin dans un list et
+        l'index de cette liste est l'index qui correspond au click de l'utilisateur
+        ceci permet d'afficher des détails de la crypto
+      */
       // init variable
       final coin = state.coins[_index];
 
-      /* calcPrevious value
-                 * d'abord transfo le pourcentage en valeur comppris entre  -1 et 1
-                 * ajouter 1 a la valeur abs du résultat
-                 * si résultat positif * par addition sinon /
-                */
+      /*
+         calcPrevious value
+         d'abord transfo le pourcentage en valeur comppris entre  -1 et 1
+         ajouter 1 a la valeur abs du résultat
+         si résultat positif * par addition sinon /
+      */
       var _changeTempo24h = coin.changePct24h / 100;
       var _changeTempo1h = coin.changePct1h / 100;
       price1d = (_changeTempo24h <= 0)
@@ -103,20 +112,20 @@ class _CryptoPageState extends State<CryptoPage> {
                     child: Container(
                       width: screen.size.width * 0.95,
                       height: screen.size.height * 0.5,
-                      color: white,
+                      color: (isDark) ? grey : white,
                     ),
                   ),
                   Positioned(
                     top: screen.size.height * 0.05,
                     left: 5.0,
-                    child: Text("${_cryptoValue.reduce(max)
-                        .toStringAsFixed(4)}"),
+                    child:
+                        Text("${_cryptoValue.reduce(max).toStringAsFixed(4)}"),
                   ),
                   Positioned(
                     top: screen.size.height * 0.4,
                     left: 5.0,
-                    child: Text("${_cryptoValue.reduce(min).toStringAsFixed(4)
-                    }"),
+                    child:
+                        Text("${_cryptoValue.reduce(min).toStringAsFixed(4)}"),
                   ),
                   Positioned(
                     top: screen.size.height * 0.05,
@@ -126,6 +135,8 @@ class _CryptoPageState extends State<CryptoPage> {
                       child: Sparkline(
                         data: _cryptoValue,
                         pointsMode: PointsMode.all,
+                        pointColor: (isDark) ? white : Colors.lightBlue,
+                        lineColor: (isDark) ? white : Colors.lightBlue,
                       ),
                     ),
                   ),
@@ -170,30 +181,35 @@ class _CryptoPageState extends State<CryptoPage> {
               ClipRRect(
                 borderRadius: BorderRadius.circular(35.0),
                 child: Container(
-                  color: white,
+                  color: (isDark) ? grey : white,
                   width: screen.size.width * 0.9,
                   child: Column(
                     children: [
                       SizedBox(height: 5.0),
                       rowCrypto(
+                        isDark: isDark,
                         textDescribe: "Market Cap",
                         value: "\$ ${coin.marketCapCrypto}",
                       ),
                       rowCrypto(
+                        isDark: isDark,
                         textDescribe: "24h Volume",
                         value: "\$ ${coin.volume24h.toStringAsFixed(2)}",
                       ),
                       rowCrypto(
+                        isDark: isDark,
                         textDescribe: "Available Supply",
                         value:
                             "${coin.availableSupply.toStringAsFixed(2)} ${coin.name}",
                       ),
                       rowCrypto(
+                        isDark: isDark,
                         textDescribe: "% change 1h",
                         value: "${coin.changePct1h.toStringAsFixed(2)} %",
                         colorValue: coin.changePct1h >= 0 ? green : red,
                       ),
                       rowCrypto(
+                        isDark: isDark,
                         textDescribe: "% change 1d",
                         value: "${coin.changePct24h.toStringAsFixed(2)} %",
                         colorValue: coin.changePct24h >= 0 ? green : red,
@@ -213,6 +229,7 @@ class _CryptoPageState extends State<CryptoPage> {
   }
 
   Widget rowCrypto({
+    @required bool isDark,
     @required String textDescribe,
     @required String value,
     Color colorValue = Colors.black,
@@ -228,7 +245,7 @@ class _CryptoPageState extends State<CryptoPage> {
         children: [
           Text(
             textDescribe,
-            style: TextStyle(color: black),
+            style: TextStyle(color: (isDark) ? white : black),
           ),
           Spacer(),
           Text(

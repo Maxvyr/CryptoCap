@@ -32,6 +32,6 @@ class AppBarCustomMain extends AppBar {
             ),
           ],
           centerTitle: true,
-          backgroundColor: blueMain,
+          backgroundColor: Theme.of(context).primaryColor,
         );
 }

@@ -24,7 +24,10 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SafeArea(
         child: BlocBuilder<CryptoBloc, CryptoState>(
           builder: (context, state) {
-            return ContainerMain(_buildBody(state));
+            return ContainerMain(
+              context,
+              _buildBody(state),
+            );
           },
         ),
       ),
