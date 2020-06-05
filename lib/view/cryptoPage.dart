@@ -67,11 +67,14 @@ class _CryptoPageState extends State<CryptoPage> {
                  * ajouter 1 a la valeur abs du résultat
                  * si résultat positif * par addition sinon /
                 */
-                var _changeTempo24h = coin.changePct24h/100;
-                var _changeTempo1h = coin.changePct1h/100;
-                price1d = (_changeTempo24h >= 0) ? coin.price * (1+ _changeTempo24h.abs()) : coin.price / (1+ _changeTempo24h.abs()) ;
-                price1h = (_changeTempo1h >= 0) ? coin.price * (1+ _changeTempo1h.abs()) : coin.price / (1+ _changeTempo1h.abs()) ;
-                print("$price1d et $price1h");
+                var _changeTempo24h = coin.changePct24h / 100;
+                var _changeTempo1h = coin.changePct1h / 100;
+                price1d = (_changeTempo24h <= 0)
+                    ? coin.price * (1 + _changeTempo24h.abs())
+                    : coin.price / (1 + _changeTempo24h.abs());
+                price1h = (_changeTempo1h <= 0)
+                    ? coin.price * (1 + _changeTempo1h.abs())
+                    : coin.price / (1 + _changeTempo1h.abs());
 
                 _cryptoValue = [
                   price1d,
@@ -81,22 +84,49 @@ class _CryptoPageState extends State<CryptoPage> {
                 return SingleChildScrollView(
                   child: Column(
                     children: [
-                      SizedBox(height: 10.0),
+                      SizedBox(height: screen.size.height * 0.001),
+
                       // graph
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(35.0),
-                        child: Container(
-                          width: screen.size.width * 0.9,
-                          height: screen.size.height * 0.5,
-                          color: white,
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Sparkline(
-                              data: _cryptoValue,
-                              pointsMode: PointsMode.all,
+                      Stack(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(35.0),
+                            child: Container(
+                              width: screen.size.width * 0.9,
+                              height: screen.size.height * 0.5,
+                              color: white,
                             ),
                           ),
-                        ),
+                          Positioned(
+                            top: screen.size.height * 0.05,
+                            left: 5.0,
+                            child:
+                                Text("${_cryptoValue[2].toStringAsFixed(2)}"),
+                          ),
+                          Positioned(
+                            top: screen.size.height * 0.25,
+                            left: 5.0,
+                            child:
+                                Text("${_cryptoValue[1].toStringAsFixed(2)}"),
+                          ),
+                          Positioned(
+                            top: screen.size.height * 0.4,
+                            left: 5.0,
+                            child:
+                                Text("${_cryptoValue[0].toStringAsFixed(2)}"),
+                          ),
+                          Positioned(
+                            top: screen.size.height * 0.05,
+                            left: screen.size.width * 0.15,
+                            child: Container(
+                              height: screen.size.height * 0.4,
+                              child: Sparkline(
+                                data: _cryptoValue,
+                                pointsMode: PointsMode.all,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
 
                       // Button Buy crypto - Coinbase
