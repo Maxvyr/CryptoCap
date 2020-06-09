@@ -18,10 +18,11 @@ class _ParamPageState extends State<ParamPage> {
 
   @override
   Widget build(BuildContext context) {
-
     //variable DarkMode
-    final Brightness brightnessValue = MediaQuery.of(context).platformBrightness;
+    final Brightness brightnessValue =
+        MediaQuery.of(context).platformBrightness;
     bool isDark = brightnessValue == Brightness.dark;
+     double sizeTextCurrencies = 18.0;
 
     return Scaffold(
       appBar: AppBarCustomMain(
@@ -96,7 +97,7 @@ class _ParamPageState extends State<ParamPage> {
               ),
             ),
 
-
+            // contact button
             Positioned(
               top: MediaQuery.of(context).size.height * 0.22,
               left: MediaQuery.of(context).size.width * 0.35,
@@ -118,14 +119,70 @@ class _ParamPageState extends State<ParamPage> {
 
             // choice money (USD EUR BTC)
             Positioned(
-                top: MediaQuery.of(context).size.height * 0.22,
-                left: MediaQuery.of(context).size.width * 0.35,
-                child: Row(
-                  children: [
-                    Text("Devise :"),
-                    Radio(value: null, groupValue: null, onChanged: null)
-                  ],
-                ),),
+              top: MediaQuery.of(context).size.height * 0.4,
+              left: MediaQuery.of(context).size.width * 0.3,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  textWidget(
+                    txt: "Devise :",
+                    size: 25.0,
+                  ),
+                  SizedBox(height: 10.0),
+                  Row(
+                    children: [
+                      Radio(
+                        value: "USD",
+                        groupValue: currencyChoice,
+                        onChanged: (value) {
+                          setState(() {
+                            currencyChoice = value;
+                          });
+                        },
+                      ),
+                      textWidget(
+                        txt: "USD",
+                        size: sizeTextCurrencies,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Radio(
+                        value: "EUR",
+                        groupValue: currencyChoice,
+                        onChanged: (value) {
+                          setState(() {
+                            currencyChoice = value;
+                          });
+                        },
+                      ),
+                      textWidget(
+                        txt: "EUR",
+                        size: sizeTextCurrencies,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Radio(
+                        value: "BTC",
+                        groupValue: currencyChoice,
+                        onChanged: (value) {
+                          setState(() {
+                            currencyChoice = value;
+                          });
+                        },
+                      ),
+                      textWidget(
+                        txt: "BTC",
+                        size: sizeTextCurrencies,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
 
             // Brand
             Positioned(
@@ -142,18 +199,37 @@ class _ParamPageState extends State<ParamPage> {
                   Text(
                     " App version 1.0.0",
                     textAlign: TextAlign.end,
-                    style: TextStyle(fontFamily: fontApp, fontSize: 10.0,),
+                    style: TextStyle(
+                      fontFamily: fontApp,
+                      fontSize: 10.0,
+                    ),
                   ),
                   Text(
                     "  Pandamy - Maxvyr",
                     textAlign: TextAlign.end,
-                    style: TextStyle(fontFamily: fontApp, fontSize: 10.0,),
+                    style: TextStyle(
+                      fontFamily: fontApp,
+                      fontSize: 10.0,
+                    ),
                   ),
                 ],
               ),
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Text textWidget({
+    @required String txt,
+    @required double size,
+  }) {
+    return Text(
+      txt,
+      style: TextStyle(
+        fontSize: size,
+        fontFamily: fontApp,
       ),
     );
   }
