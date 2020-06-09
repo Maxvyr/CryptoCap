@@ -148,6 +148,20 @@ class _CryptoPageState extends State<CryptoPage> {
                       ),
                     ),
                   ),
+
+                  // time 24 hours
+                  Positioned(
+                    top: screen.size.height * 0.47,
+                    left: screen.size.width * 0.22,
+                    child: Text("24h"),
+                  ),
+
+                  // time 1 hour
+                  Positioned(
+                    top: screen.size.height * 0.47,
+                    left: screen.size.width * 0.5,
+                    child: Text("1h"),
+                  ),
                 ],
               ),
 

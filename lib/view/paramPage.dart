@@ -96,6 +96,37 @@ class _ParamPageState extends State<ParamPage> {
               ),
             ),
 
+
+            Positioned(
+              top: MediaQuery.of(context).size.height * 0.22,
+              left: MediaQuery.of(context).size.width * 0.35,
+              child: IconButton(
+                tooltip: "Contact",
+                alignment: Alignment.topCenter,
+                iconSize: 100.0,
+                icon: ClipRRect(
+                  borderRadius: BorderRadius.circular(25.0),
+                  child: Image.network(
+                    "https://i.imgur.com/wrNX019.png",
+                  ),
+                ),
+                onPressed: () {
+                  launch("mailto:maxvy_@naver.com");
+                },
+              ),
+            ),
+
+            // choice money (USD EUR BTC)
+            Positioned(
+                top: MediaQuery.of(context).size.height * 0.22,
+                left: MediaQuery.of(context).size.width * 0.35,
+                child: Row(
+                  children: [
+                    Text("Devise :"),
+                    Radio(value: null, groupValue: null, onChanged: null)
+                  ],
+                ),),
+
             // Brand
             Positioned(
               bottom: MediaQuery.of(context).size.height * 0.03,
