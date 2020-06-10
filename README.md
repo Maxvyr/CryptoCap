@@ -4,7 +4,7 @@ Tracking crypto-currencies application,
 made with Flutter
 
 ![HomeScreen](https://i.imgur.com/XtAQDF4m.png)
-![ParamScreen](https://i.imgur.com/FGyyvGym.png)
+![ParamScreen](https://i.imgur.com/KTBm4aNm.png)
 ![CryptoScreen](https://i.imgur.com/I5nPv9cm.png)
 
 
