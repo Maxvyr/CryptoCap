@@ -22,7 +22,6 @@ class _ParamPageState extends State<ParamPage> {
     final Brightness brightnessValue =
         MediaQuery.of(context).platformBrightness;
     bool isDark = brightnessValue == Brightness.dark;
-//     double sizeTextCurrencies = 18.0;
 
     return Scaffold(
       appBar: AppBarCustomMain(
@@ -116,75 +115,7 @@ class _ParamPageState extends State<ParamPage> {
                 },
               ),
             ),
-
-            // choice money (USD EUR BTC)
-//            Positioned(
-//              top: MediaQuery.of(context).size.height * 0.4,
-//              left: MediaQuery.of(context).size.width * 0.3,
-//              child: Column(
-//                crossAxisAlignment: CrossAxisAlignment.start,
-//                children: [
-//                  textWidget(
-//                    txt: "Devise :",
-//                    size: 25.0,
-//                  ),
-//                  SizedBox(height: 10.0),
-//                  Row(
-//                    children: [
-//                      Radio(
-//                        value: "USD",
-//                        groupValue: currencyChoice,
-//                        onChanged: (value) {
-//                          setState(() {
-//                            currencyChoice = value;
-//                          });
-//                        },
-//                      ),
-//                      textWidget(
-//                        txt: "USD",
-//                        size: sizeTextCurrencies,
-//                      ),
-//                    ],
-//                  ),
-//                  Row(
-//                    children: [
-//                      Radio(
-//                        value: "EUR",
-//                        groupValue: currencyChoice,
-//                        onChanged: (value) {
-//                          setState(() {
-//                            currencyChoice = value;
-//                          });
-//                        },
-//                      ),
-//                      textWidget(
-//                        txt: "EUR",
-//                        size: sizeTextCurrencies,
-//                      ),
-//                    ],
-//                  ),
-//                  Row(
-//                    children: [
-//                      Radio(
-//                        value: "BTC",
-//                        groupValue: currencyChoice,
-//                        onChanged: (value) {
-//                          setState(() {
-//                            currencyChoice = value;
-//                            print(currencyChoice);
-//                          });
-//                        },
-//                      ),
-//                      textWidget(
-//                        txt: "BTC",
-//                        size: sizeTextCurrencies,
-//                      ),
-//                    ],
-//                  ),
-//                ],
-//              ),
-//            ),
-
+          
             // Brand
             Positioned(
               bottom: MediaQuery.of(context).size.height * 0.03,

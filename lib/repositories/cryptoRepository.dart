@@ -22,8 +22,6 @@ class CryptoRepository extends BaseCryptoRepository {
     String requestUrl =
         "$_baseUrl/data/top/mktcapfull?limit=$perPage&tsym=$_currency&page=$page"
         "&api_key=$_apikey";
-//    String requestUrl =
-//        "$_baseUrl/data/top/mktcapfull?limit=$perPage&tsym=USD&page=$page&api_key=$_apikey";
 
     try {
       final response = await _httpClient.get(requestUrl);
