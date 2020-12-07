@@ -8,6 +8,16 @@ made with Flutter
 ![CryptoScreen](https://i.imgur.com/I5nPv9cm.png)
 
 
-<a href="https://www.buymeacoffee.com/Maxvy" target="_blank"><img src="https://i.imgur.com/CNigpZm.png" alt="A Little Coffee Please" style="height: 25px;width: 50px;" ></a>
+# My apps on Store
 
-contact : pandamydev@gmail.com
+<a href="[https://play.google.com/store/apps/developer?id=Pandamy](https://play.google.com/store/apps/developer?id=Pandamy)" target="_blank"><img src="[https://i.imgur.com/YetVBL1.png](https://i.imgur.com/YetVBL1.png)" alt="Get in on PlayStore" style="height: 25px; width: 50px;" ></a>
+
+contact : [pandamydev@gmail.com](mailto:pandamydev@gmail.com)
+
+# Tips
+
+- [Donation](https://ko-fi.com/maxvyr)
+
+# Crypto Tips
+
+![https://i.imgur.com/XpF2vgw.png](https://i.imgur.com/XpF2vgw.png)
