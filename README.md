@@ -18,6 +18,6 @@ contact : [pandamydev@gmail.com](mailto:pandamydev@gmail.com)
 
 - [Donation](https://ko-fi.com/maxvyr)
 
-# Crypto Tips
+# Crypto Tips(ETH)
 
 ![https://i.imgur.com/XpF2vgw.png](https://i.imgur.com/XpF2vgw.png)
